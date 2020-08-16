@@ -3,6 +3,7 @@
 
 #include <stdint.h> //Fuck SDL,what is the difference between stdint.h and inttypes.h?
 
+#ifdef __cplusplus
 extern "C" {
 
 typedef int EgretBool;
@@ -12,5 +13,6 @@ typedef int EgretBool;
 typedef uint32_t EgretInt32;
 
 } // EXTERN C
+#endif
 
 #endif

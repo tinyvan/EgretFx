@@ -5,6 +5,7 @@
 #include "EgretWindow.h"
 #include <SDL2/SDL_render.h>
 
+#ifdef __cplusplus
 extern "C" {
 
 typedef SDL_Color EgretColor;
@@ -20,5 +21,6 @@ typedef struct EgretLayer {
                  (destination_rect))
 
 } // EXTERN C
+#endif
 
 #endif

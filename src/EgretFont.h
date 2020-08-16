@@ -5,6 +5,7 @@
 #include "EgretLayer.h"
 #include "EgretWindow.h"
 
+#ifdef __cplusplus
 extern "C" {
 
 typedef TTF_Font EgretFont;
@@ -75,5 +76,6 @@ EgretLayer *EgretDrawTextInSolidMode(const char *text, EgretFont *font,
 }
 
 } // EXTERN C
+#endif
 
 #endif
