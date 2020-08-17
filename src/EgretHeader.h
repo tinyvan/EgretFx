@@ -4,7 +4,9 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
+#ifdef __cplusplus
 extern "C" {
+#endif
 
 #define EgretFontEnabled 1
 
@@ -12,6 +14,8 @@ extern "C" {
 #define EgretFontShadeModeEnabled 1
 #define EgretFontSolidModeEnabled 1
 
+#ifdef __cplusplus
 } // EXTERN C
+#endif
 
 #endif

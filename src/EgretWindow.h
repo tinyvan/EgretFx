@@ -5,7 +5,9 @@
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_surface.h>
 
+#ifdef __cplusplus
 extern "C" {
+#endif
 
 typedef struct EgretWindow {
   SDL_Window *sdlwindow;
@@ -64,6 +66,8 @@ void EgretDestroyWindow(EgretWindow *window) {
 #define EgretSetWindowTitle(window, title)                                     \
   SDL_SetWindowTitle((window)->sdlwindow, (title))
 
+#ifdef __cplusplus
 } // EXTERN C
+#endif
 
 #endif
