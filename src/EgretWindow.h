@@ -2,8 +2,8 @@
 #define EgretWindow_Header
 
 #include "EgretHeader.h"
-#include <SDL2/SDL_render.h>
-#include <SDL2/SDL_surface.h>
+#include _EgretSDL2_render
+#include _EgretSDL2_video
 
 #ifdef __cplusplus
 extern "C" {

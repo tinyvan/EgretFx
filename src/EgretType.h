@@ -1,17 +1,16 @@
 #ifndef EgretType_Header
 #define EgretType_Header
 
-#include <stdint.h> //Fuck SDL,what is the difference between stdint.h and inttypes.h?
+#include "EgretHeader.h"
+#include _EgretSDL2_stdinc
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-typedef int EgretBool;
-#define EgretFalse 0
-#define EgretTrue 1
+typedef SDL_bool EgretBool;
 
-typedef uint32_t EgretInt32;
+typedef Uint32 EgretInt32;
 
 #ifdef __cplusplus
 } // EXTERN C
