@@ -2,6 +2,8 @@
 #define EgretFont_Header
 
 #include "EgretHeader.h"
+#include _EgretSDL2_ttf
+
 #include "EgretLayer.h"
 #include "EgretWindow.h"
 

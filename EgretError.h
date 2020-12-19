@@ -2,6 +2,7 @@
 #define EgretError_Header
 
 #include "EgretHeader.h"
+#include _EgretSDL2_error
 
 #ifdef __cplusplus
 extern "C" {

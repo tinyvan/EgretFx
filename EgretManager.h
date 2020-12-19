@@ -2,7 +2,7 @@
 #define EgretManager_Header
 
 #include "EgretHeader.h"
-#include <SDL2/SDL.h>
+#include _EgretSDL2
 
 #ifdef __cplusplus
 extern "C" {
