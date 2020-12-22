@@ -21,9 +21,9 @@ typedef TTF_Font EgretFont;
 #define EgretDrawText(text, font, window, mode, color...)                      \
   EgretDrawTextIn##mode##Mode((text), (font), (window), color)
 
-EgretLayer *EgretDrawTextInBlendMode(const char *text, EgretFont *font,
-                                     EgretWindow *window,
-                                     EgretColor foreground_color) {
+inline EgretLayer *EgretDrawTextInBlendMode(const char *text, EgretFont *font,
+                                            EgretWindow *window,
+                                            EgretColor foreground_color) {
   SDL_Surface *sdlsurface =
       TTF_RenderUTF8_Blended(font, text, foreground_color);
   if (!sdlsurface)
@@ -40,10 +40,10 @@ EgretLayer *EgretDrawTextInBlendMode(const char *text, EgretFont *font,
   return layer;
 }
 
-EgretLayer *EgretDrawTextInShadeMode(const char *text, EgretFont *font,
-                                     EgretWindow *window,
-                                     EgretColor foreground_color,
-                                     EgretColor background_color) {
+inline EgretLayer *EgretDrawTextInShadeMode(const char *text, EgretFont *font,
+                                            EgretWindow *window,
+                                            EgretColor foreground_color,
+                                            EgretColor background_color) {
   SDL_Surface *sdlsurface =
       TTF_RenderUTF8_Shaded(font, text, foreground_color, background_color);
   if (!sdlsurface)
@@ -60,9 +60,9 @@ EgretLayer *EgretDrawTextInShadeMode(const char *text, EgretFont *font,
   return layer;
 }
 
-EgretLayer *EgretDrawTextInSolidMode(const char *text, EgretFont *font,
-                                     EgretWindow *window,
-                                     EgretColor foreground_color) {
+inline EgretLayer *EgretDrawTextInSolidMode(const char *text, EgretFont *font,
+                                            EgretWindow *window,
+                                            EgretColor foreground_color) {
   SDL_Surface *sdlsurface = TTF_RenderUTF8_Solid(font, text, foreground_color);
   if (!sdlsurface)
     return NULL;

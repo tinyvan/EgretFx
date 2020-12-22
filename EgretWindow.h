@@ -37,9 +37,9 @@ typedef enum {
 } EgretRendererFlags;
 
 #define EgretClearWindow(window) SDL_RenderClear((window)->sdlrenderer)
-EgretWindow *EgretCreateWindow(const char *title, int x, int y, int w, int h,
-                               EgretWindowFlags windowflags,
-                               EgretRendererFlags rendererflags) {
+inline EgretWindow *EgretCreateWindow(const char *title, int x, int y, int w,
+                                      int h, EgretWindowFlags windowflags,
+                                      EgretRendererFlags rendererflags) {
   EgretWindow *window = (EgretWindow *)SDL_calloc(1, sizeof(*window));
   window->sdlwindow =
       SDL_CreateWindow(title, x, y, w, h, (Uint32)(windowflags));
@@ -52,7 +52,7 @@ EgretWindow *EgretCreateWindow(const char *title, int x, int y, int w, int h,
   return window;
 }
 
-void EgretDestroyWindow(EgretWindow *window) {
+inline void EgretDestroyWindow(EgretWindow *window) {
   SDL_DestroyWindow(window->sdlwindow);
   SDL_DestroyRenderer(window->sdlrenderer);
   SDL_free(window);
