@@ -22,7 +22,7 @@ extern "C" {
 #define EgretFontSolidModeEnabled 1
 
 #ifdef __cplusplus
-} // EXTERN C
+}  // EXTERN C
 #endif
 
 #endif

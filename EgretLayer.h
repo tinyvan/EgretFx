@@ -18,12 +18,12 @@ typedef struct EgretLayer {
   int h;
 } EgretLayer;
 
-#define EgretLayerToWindow(layer, window, source_rect, destination_rect)       \
-  SDL_RenderCopy((window)->sdlrenderer, (layer)->sdltexture, (source_rect),    \
+#define EgretLayerToWindow(layer, window, source_rect, destination_rect)    \
+  SDL_RenderCopy((window)->sdlrenderer, (layer)->sdltexture, (source_rect), \
                  (destination_rect))
 
 #ifdef __cplusplus
-} // EXTERN C
+}  // EXTERN C
 #endif
 
 #endif

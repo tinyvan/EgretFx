@@ -43,12 +43,10 @@ inline EgretWindow *EgretCreateWindow(const char *title, int x, int y, int w,
   EgretWindow *window = (EgretWindow *)SDL_calloc(1, sizeof(*window));
   window->sdlwindow =
       SDL_CreateWindow(title, x, y, w, h, (Uint32)(windowflags));
-  if (!window->sdlwindow)
-    return NULL;
+  if (!window->sdlwindow) return NULL;
   window->sdlrenderer =
       SDL_CreateRenderer(window->sdlwindow, -1, (Uint32)(rendererflags));
-  if (!window->sdlrenderer)
-    return NULL;
+  if (!window->sdlrenderer) return NULL;
   return window;
 }
 
@@ -59,15 +57,15 @@ inline void EgretDestroyWindow(EgretWindow *window) {
 }
 
 #define EgretDrawWindow(window) SDL_RenderPresent((window)->sdlrenderer)
-#define EgretSetWindowResizable(window, resizable)                             \
+#define EgretSetWindowResizable(window, resizable) \
   SDL_SetWindowResizable((window)->sdlwindow, (resizable))
-#define EgretSetWindowSize(window, w, h)                                       \
+#define EgretSetWindowSize(window, w, h) \
   SDL_SetWindowSize((window)->sdlwindow, (w), (h))
-#define EgretSetWindowTitle(window, title)                                     \
+#define EgretSetWindowTitle(window, title) \
   SDL_SetWindowTitle((window)->sdlwindow, (title))
 
 #ifdef __cplusplus
-} // EXTERN C
+}  // EXTERN C
 #endif
 
 #endif

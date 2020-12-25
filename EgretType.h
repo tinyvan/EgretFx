@@ -13,7 +13,7 @@ typedef SDL_bool EgretBool;
 typedef Uint32 EgretInt32;
 
 #ifdef __cplusplus
-} // EXTERN C
+}  // EXTERN C
 #endif
 
 #endif

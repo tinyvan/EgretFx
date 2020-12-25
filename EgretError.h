@@ -12,7 +12,7 @@ extern "C" {
 #define EgretSetError SDL_SetError
 
 #ifdef __cplusplus
-} // EXTERN C
+}  // EXTERN C
 #endif
 
 #endif
