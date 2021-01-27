@@ -14,38 +14,35 @@ typedef struct EgretWindow {
   SDL_Renderer *sdlrenderer;
 } EgretWindow;
 
-typedef enum {
-  EgretWindowAllowHighDPI = 1 << 13,
-  EgretWindowBorderless = 1 << 4,
-  EgretWindowFullScreen = 1,
-  EgretWindowFullScreenOnDesktop = (EgretWindowFullScreen | 1 << 12),
-  EgretWindowInputGrabbed = 1 << 8,
-  EgretWindowHidden = 1 << 3,
-  EgretWindowMaximized = 1 << 7,
-  EgretWindowMinimized = 1 << 6,
-  EgretWindowOpengl = 1 << 1,
-  EgretWindowResizable = 1 << 5,
-  EgretWindowShown = 1 << 2,
-  EgretWindowVulkan = 1 << 28
-} EgretWindowFlags;
+#define EgretWindowAllowHighDPI (1 << 13)
+#define EgretWindowBorderless (1 << 4)
+#define EgretWindowFullScreen (1)
+#define EgretWindowFullScreenOnDesktop (EgretWindowFullScreen | 1 << 12)
+#define EgretWindowInputGrabbed (1 << 8)
+#define EgretWindowHidden (1 << 3)
+#define EgretWindowMaximized (1 << 7)
+#define EgretWindowMinimized (1 << 6)
+#define EgretWindowOpengl (1 << 1)
+#define EgretWindowResizable (1 << 5)
+#define EgretWindowShown (1 << 2)
+#define EgretWindowVulkan (1 << 28)
+typedef Uint32 EgretWindowFlags;
 
-typedef enum {
-  EgretRendererHardwareAccelerated = SDL_RENDERER_ACCELERATED,
-  EgretRendererSoftwareFallback = SDL_RENDERER_SOFTWARE,
-  EgretRendererTargetTexture = SDL_RENDERER_TARGETTEXTURE,
-  EgretRendererVsync = SDL_RENDERER_PRESENTVSYNC
-} EgretRendererFlags;
+#define EgretRendererHardwareAccelerated SDL_RENDERER_ACCELERATED
+#define EgretRendererSoftwareFallback SDL_RENDERER_SOFTWARE
+#define EgretRendererTargetTexture SDL_RENDERER_TARGETTEXTURE
+#define EgretRendererVsync SDL_RENDERER_PRESENTVSYNC
+typedef Uint32 EgretRendererFlags;
 
 #define EgretClearWindow(window) SDL_RenderClear((window)->sdlrenderer)
 inline EgretWindow *EgretCreateWindow(const char *title, int x, int y, int w,
                                       int h, EgretWindowFlags windowflags,
                                       EgretRendererFlags rendererflags) {
   EgretWindow *window = (EgretWindow *)SDL_calloc(1, sizeof(*window));
-  window->sdlwindow =
-      SDL_CreateWindow(title, x, y, w, h, (Uint32)(windowflags));
+  window->sdlwindow = SDL_CreateWindow(title, x, y, w, h, windowflags);
   if (!window->sdlwindow) return NULL;
   window->sdlrenderer =
-      SDL_CreateRenderer(window->sdlwindow, -1, (Uint32)(rendererflags));
+      SDL_CreateRenderer(window->sdlwindow, -1, rendererflags);
   if (!window->sdlrenderer) return NULL;
   return window;
 }
