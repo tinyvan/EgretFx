@@ -37,6 +37,8 @@ typedef union EgretEvent {
   EgretWindowEvent window;
 } EgretEvent;
 
+inline void EgretPollEvent(EgretEvent *e) { SDL_PollEvent((SDL_Event *)e); }
+
 #ifdef __cplusplus
 }
 #endif

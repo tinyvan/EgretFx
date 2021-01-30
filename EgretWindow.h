@@ -60,6 +60,7 @@ inline void EgretDestroyWindow(EgretWindow *window) {
   SDL_SetWindowSize((window)->sdlwindow, (w), (h))
 #define EgretSetWindowTitle(window, title) \
   SDL_SetWindowTitle((window)->sdlwindow, (title))
+#define EgretShowWindow(window) SDL_ShowWindow((window)->sdlwindow)
 
 #ifdef __cplusplus
 }  // EXTERN C
