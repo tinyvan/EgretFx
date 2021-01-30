@@ -11,18 +11,4 @@
 #define _EgretSDL2_stdinc <SDL2/SDL_stdinc.h>
 #define _EgretSDL2_video <SDL2/SDL_video.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#define EgretFontEnabled 1
-
-#define EgretFontBlendModeEnabled 1
-#define EgretFontShadeModeEnabled 1
-#define EgretFontSolidModeEnabled 1
-
-#ifdef __cplusplus
-}  // EXTERN C
-#endif
-
 #endif
