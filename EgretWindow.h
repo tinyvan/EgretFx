@@ -10,8 +10,8 @@ extern "C" {
 #endif
 
 typedef struct EgretWindow {
-  SDL_Window *sdlwindow;
-  SDL_Renderer *sdlrenderer;
+  SDL_Window *SDLWindow;
+  SDL_Renderer *SDLRenderer;
 } EgretWindow;
 
 #define EgretWindowAllowHighDPI (1 << 13)
@@ -34,33 +34,35 @@ typedef Uint32 EgretWindowFlags;
 #define EgretRendererVsync SDL_RENDERER_PRESENTVSYNC
 typedef Uint32 EgretRendererFlags;
 
-#define EgretClearWindow(window) SDL_RenderClear((window)->sdlrenderer)
+#define EgretClearWindow(window) SDL_RenderClear((window)->SDLRenderer)
 inline EgretWindow *EgretCreateWindow(const char *title, int x, int y, int w,
                                       int h, EgretWindowFlags windowflags,
                                       EgretRendererFlags rendererflags) {
-  EgretWindow *window = (EgretWindow *)SDL_calloc(1, sizeof(*window));
-  window->sdlwindow = SDL_CreateWindow(title, x, y, w, h, windowflags);
-  if (!window->sdlwindow) return NULL;
-  window->sdlrenderer =
-      SDL_CreateRenderer(window->sdlwindow, -1, rendererflags);
-  if (!window->sdlrenderer) return NULL;
+  EgretWindow *window;
+  window = (EgretWindow *)SDL_calloc(1, sizeof(*window));
+  window->SDLWindow = SDL_CreateWindow(title, x, y, w, h, windowflags);
+  // EgretPRIVATEreturn_if_null(window->SDLWindow);
+  window->SDLRenderer =
+      SDL_CreateRenderer(window->SDLWindow, -1, rendererflags);
+  // EgretPRIVATEreturn_if_null(window->SDLRenderer);
   return window;
 }
 
 inline void EgretDestroyWindow(EgretWindow *window) {
-  SDL_DestroyWindow(window->sdlwindow);
-  SDL_DestroyRenderer(window->sdlrenderer);
+  SDL_DestroyWindow(window->SDLWindow);
+  SDL_DestroyRenderer(window->SDLRenderer);
   SDL_free(window);
 }
 
-#define EgretDrawWindow(window) SDL_RenderPresent((window)->sdlrenderer)
+#define EgretRenderWindow(window) SDL_RenderPresent((window)->SDLRenderer)
+#define EgretGetWindowFlags(window) SDL_GetWindowFlags((window)->SDLWindow)
 #define EgretSetWindowResizable(window, resizable) \
-  SDL_SetWindowResizable((window)->sdlwindow, (resizable))
+  SDL_SetWindowResizable((window)->SDLWindow, (resizable))
 #define EgretSetWindowSize(window, w, h) \
-  SDL_SetWindowSize((window)->sdlwindow, (w), (h))
+  SDL_SetWindowSize((window)->SDLWindow, (w), (h))
 #define EgretSetWindowTitle(window, title) \
-  SDL_SetWindowTitle((window)->sdlwindow, (title))
-#define EgretShowWindow(window) SDL_ShowWindow((window)->sdlwindow)
+  SDL_SetWindowTitle((window)->SDLWindow, (title))
+#define EgretShowWindow(window) SDL_ShowWindow((window)->SDLWindow)
 
 #ifdef __cplusplus
 }  // EXTERN C

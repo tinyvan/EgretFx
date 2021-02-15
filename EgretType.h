@@ -1,7 +1,6 @@
 #ifndef EgretType_Header
 #define EgretType_Header
 
-#include "EgretFont.h"
 #include "EgretHeader.h"
 #include _EgretSDL2_stdinc
 

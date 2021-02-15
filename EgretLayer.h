@@ -5,6 +5,10 @@
 #include _EgretSDL2_pixels
 #include _EgretSDL2_rect
 #include _EgretSDL2_render
+#include _EgretSDL2_stdinc
+#include _EgretSDL2_surface
+
+#include "EgretWindow.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -13,14 +17,27 @@ extern "C" {
 typedef SDL_Color EgretColor;
 typedef SDL_Rect EgretRect;
 typedef struct EgretLayer {
-  SDL_Texture *sdltexture;
-  int w;
-  int h;
+  SDL_Texture *SDLTexture;
+  EgretRect rect;
 } EgretLayer;
 
-#define EgretLayerToWindow(layer, window, source_rect, destination_rect)    \
-  SDL_RenderCopy((window)->sdlrenderer, (layer)->sdltexture, (source_rect), \
-                 (destination_rect))
+inline EgretLayer *EgretCreateLayer(EgretWindow *window, int w, int h) {
+  EgretLayer *layer;
+  layer = (EgretLayer *)SDL_calloc(1, sizeof(*layer));
+  layer->SDLTexture =
+      SDL_CreateTexture(window->SDLRenderer, SDL_PIXELFORMAT_ARGB8888,
+                        SDL_TEXTUREACCESS_STATIC, w, h);
+  return layer;
+}
+
+inline void EgretDestroyLayer(EgretLayer *layer) {
+  SDL_DestroyTexture(layer->SDLTexture);
+  SDL_free(layer);
+}
+
+#define EgretLayerToWindow(layer, window, srcRect, destRect)            \
+  SDL_RenderCopy((window)->SDLRenderer, (layer)->SDLTexture, (srcRect), \
+                 (destRect))
 
 #ifdef __cplusplus
 }  // EXTERN C
